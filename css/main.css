@@ -33,6 +33,11 @@ body {
   font-weight: 400;
   color: #000;
 }
+/* swiper 기본 셋팅 */
+.swiper {
+  width: 100%;
+  height: 100%;
+}
 /* 고정 메뉴 */
 .fix-menu {
   position: fixed;
@@ -235,6 +240,7 @@ body {
   position: relative;
   display: block;
   text-align: center;
+  bottom: 0 !important;
 }
 
 /* 제품 기본 레이아웃 */
@@ -314,16 +320,10 @@ body {
 }
 .good-wrap {
   position: relative;
-  display: block;
+  display: flex;
+  justify-content: space-between;
+
   margin-bottom: 30px;
-}
-.good-wrap .good-box {
-  float: left;
-  margin-right: calc((100% - (290px * 4)) / 3);
-}
-.good-wrap .good-box:last-child {
-  margin-right: 0;
-  float: right;
 }
 .no-mb {
   margin-bottom: 0;
@@ -350,28 +350,35 @@ body {
   position: relative;
   display: block;
 }
-.good-slide .good-box {
-  float: left;
-  margin-right: calc((100% - (290px * 3)) / 2);
-}
-.good-slide .good-box:last-child {
-  margin-right: 0;
-  float: right;
-}
 
 /* 레이아웃 */
+.header.active {
+  top: -61px !important;
+}
+.wrap.active {
+  padding-top: calc(128px - 61px) !important;
+}
+
 .wrap {
   position: relative;
   display: block;
+  /* 헤더가 fix 가 되므로 레이아웃용 */
+  padding-top: 128px;
+  transition: padding-top 0.2s;
 }
 /* 상단 */
 .header {
-  position: relative;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: top 0.2s;
   display: block;
+  width: 100%;
   z-index: 9999;
   background: #fff;
   border-bottom: 1px solid #eee;
 }
+
 .header-top {
   position: relative;
   display: block;
@@ -465,7 +472,7 @@ body {
   background: url("../images/icoMyMenu.png") no-repeat;
   background-position: 0px 0px;
 }
-.center-more:hover::after {
+.center-more.active::after {
   background-position: 0px -6px;
 }
 .center-list {
@@ -585,7 +592,12 @@ body {
   vertical-align: 2px;
   margin-left: 2px;
 }
-.join-bt:hover .join-bt-icon {
+/* 클래스 포커스 처리 */
+.join-bt.active {
+  color: #76bd42 !important;
+}
+
+.join-bt.active .join-bt-icon {
   background-position: 0px -8px;
 }
 
@@ -657,10 +669,10 @@ body {
   margin-left: 3px;
   vertical-align: 2px;
 }
-.more-menu-bt:hover {
-  color: #76bd42;
+.more-menu-bt.active {
+  color: #76bd42 !important;
 }
-.more-menu-bt:hover .more-menu-icon {
+.more-menu-bt.active .more-menu-icon {
   background-position: 0px -6px;
 }
 
@@ -775,7 +787,10 @@ body {
   height: 64px;
   font-size: 0;
   border-radius: 50%;
+
+  z-index: 99;
 }
+
 .visual-prev {
   left: calc(50% - 600px);
   background: rgba(0, 0, 0, 0) url("../images/visualArrP.png") no-repeat;
@@ -799,6 +814,7 @@ body {
   bottom: 43px;
   left: calc(50% - 600px + 80px);
   display: block;
+  z-index: 99;
 }
 .visual-play {
   position: relative;
@@ -806,14 +822,19 @@ body {
   width: 30px;
   height: 30px;
   background: url("../images/visualPlay.png") no-repeat;
+  background-position: 0 0;
   cursor: pointer;
   border: 0;
   float: left;
 }
+.visual-play.active {
+  background-position: 0px -30px !important;
+}
+
 .visual-pg {
   position: relative;
   display: block;
-  width: 52px;
+  width: 52px !important;
   height: 30px;
   background: url("../images/visualNum.png") no-repeat;
   text-align: center;
@@ -824,6 +845,8 @@ body {
   margin-left: 5px;
 
   float: left;
+
+  bottom: 0 !important;
 }
 .visual-more {
   position: relative;
@@ -1051,17 +1074,12 @@ body {
   background: #f9f9f9;
   border: 1px solid rgba(0, 0, 0, 0);
   overflow: hidden;
-  margin-right: 10px;
-  float: left;
 }
 .popular-slide a:hover {
   background: #fff;
   border: 1px solid #76bd42;
 }
 /* 마우스 올리면 배경 바꾸기 */
-.popular-slide a:hover .popular-cate-icon {
-  background-position: 0px -64px;
-}
 .popular-cate-icon {
   position: relative;
   display: block;
@@ -1076,63 +1094,6 @@ body {
   font-size: 17px;
   text-align: center;
   white-space: nowrap;
-}
-/* 카테고리 아이콘 관련 */
-.cate-icon-1 {
-  background: url("../images/icon_1.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-2 {
-  background: url("../images/icon_2.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-3 {
-  background: url("../images/icon_3.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-4 {
-  background: url("../images/icon_4.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-5 {
-  background: url("../images/icon_5.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-6 {
-  background: url("../images/icon_6.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-7 {
-  background: url("../images/icon_7.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-8 {
-  background: url("../images/icon_8.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-9 {
-  background: url("../images/icon_9.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-10 {
-  background: url("../images/icon_10.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-11 {
-  background: url("../images/icon_11.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-12 {
-  background: url("../images/icon_12.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-13 {
-  background: url("../images/icon_13.png") no-repeat;
-  background-position: 0px 0px;
-}
-.cate-icon-14 {
-  background: url("../images/icon_14.png") no-repeat;
-  background-position: 0px 0px;
 }
 
 /* 브랜드관 */
@@ -1156,7 +1117,6 @@ body {
   height: 285px;
   background: #fff;
   padding: 35px 30px;
-  float: left;
 }
 
 .brand-box a {
@@ -1220,8 +1180,6 @@ body {
 .banner-slide a {
   position: relative;
   display: block;
-  width: 50%;
-  float: left;
 }
 
 .banner-slide-prev,
@@ -1234,6 +1192,7 @@ body {
   height: 34px;
   cursor: pointer;
   border: 0;
+  z-index: 99;
 }
 .banner-slide-prev {
   left: 20px;
@@ -1340,12 +1299,22 @@ body {
   border-bottom: 1px solid #ddd;
   padding-bottom: 15px;
 }
+/* Smooth Scrollbar 적용  */
+.scrollbar-thumb {
+  width: 8px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-radius: 4px !important;
+}
+.scrollbar-track {
+  background: rgba(222, 222, 222, 0) !important;
+}
+
 .season-good-list {
   position: relative;
   display: block;
   width: 100%;
   height: calc(85px * 3);
-  overflow: hidden;
+  overflow: auto;
 }
 .season-good-list > li {
   position: relative;
@@ -1469,15 +1438,9 @@ body {
   width: 290px;
   height: 100%;
   background: #fff;
-  margin-right: 15px;
-
   padding: 20px;
+}
 
-  float: left;
-}
-.review-slide .review-box:last-child {
-  margin-right: 0;
-}
 .review-box a {
   position: relative;
   display: block;
@@ -1777,15 +1740,88 @@ body {
   background: #ddd;
 }
 
+/* 스크롤바 안생기게 하려고 */
+.community {
+  z-index: 2;
+  /* z-index 를 조금만 늦게 적용하자. */
+  transition: z-index 0.5s;
+}
+.community.active {
+  z-index: 0 !important;
+}
+.footer {
+  z-index: 1;
+}
+
 /* 하단 */
 .footer {
   position: relative;
   display: block;
 }
+
+.family-box {
+  position: absolute;
+  left: 0;
+  bottom: calc(65px + 144px);
+  width: 100%;
+  height: 330px;
+  overflow: hidden;
+}
+
+.family {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  display: block;
+  /* visibility: hidden; */
+
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 40px 0;
+
+  transition: top 0.5s, visibility 0.5s;
+}
+.family.active {
+  visibility: visible !important;
+  top: 0 !important;
+}
+
+.family-list {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 50px);
+}
+
+.family-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  height: 30px;
+  background: url(../images/btnFamilyClose.png) no-repeat center;
+  border: 0;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.family-title {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #76bd42;
+  margin-bottom: 20px;
+}
+
+.family-area {
+  font-size: 13px;
+  line-height: 22px;
+}
+
 .footer-top {
   position: relative;
   display: block;
   border-top: 1px solid #f2f2f2;
+  background: #fff;
 }
 .footer-menu {
   position: relative;
@@ -1825,7 +1861,6 @@ body {
   display: block;
   font-size: 13px;
 }
-
 .footer-link {
   position: relative;
   display: block;
@@ -1838,6 +1873,9 @@ body {
   font-size: 13px;
   color: #666;
   padding: 0 15px;
+}
+.footer-link.active {
+  background: #f5f5f5 !important;
 }
 .blank {
   display: inline-block;
@@ -1858,6 +1896,7 @@ body {
   display: block;
   border-top: 1px solid #f2f2f2;
   padding: 20px 0;
+  background: #fff;
 }
 .footer-copy {
   position: relative;
